@@ -5,10 +5,10 @@ import (
 
 	"github.com/golang/protobuf/protoc-gen-go/descriptor"
 
-	"github.com/jhump/protoreflect/desc"
-	"github.com/jhump/protoreflect/desc/protoparse"
-	_ "github.com/jhump/protoreflect/internal/testprotos"
-	"github.com/jhump/protoreflect/internal/testutil"
+	"github.com/hoveychen/protoreflect/desc"
+	"github.com/hoveychen/protoreflect/desc/protoparse"
+	_ "github.com/hoveychen/protoreflect/internal/testprotos"
+	"github.com/hoveychen/protoreflect/internal/testutil"
 )
 
 func TestResolveImport(t *testing.T) {
@@ -24,7 +24,7 @@ func TestResolveImport(t *testing.T) {
 	})
 	expectPanic(t, func() {
 		// not a real registered path
-		desc.RegisterImportPath("github.com/jhump/x/y/z/foobar.proto", "x/y/z/foobar.proto")
+		desc.RegisterImportPath("github.com/hoveychen/x/y/z/foobar.proto", "x/y/z/foobar.proto")
 	})
 }
 

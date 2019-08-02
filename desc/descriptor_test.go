@@ -18,9 +18,9 @@ import (
 	_ "google.golang.org/genproto/protobuf/ptype"
 	_ "google.golang.org/genproto/protobuf/source_context"
 
-	"github.com/jhump/protoreflect/internal"
-	"github.com/jhump/protoreflect/internal/testprotos"
-	"github.com/jhump/protoreflect/internal/testutil"
+	"github.com/hoveychen/protoreflect/internal"
+	"github.com/hoveychen/protoreflect/internal/testprotos"
+	"github.com/hoveychen/protoreflect/internal/testutil"
 )
 
 func TestFileDescriptorObjectGraph(t *testing.T) {
@@ -669,7 +669,7 @@ func TestServiceDescriptors(t *testing.T) {
 					name: "testprotos.TestService.DoSomething",
 					references: map[string]childCases{
 						"request":  {(*MethodDescriptor).GetInputType, refs("testprotos.TestRequest")},
-						"response": {(*MethodDescriptor).GetOutputType, refs("jhump.protoreflect.desc.Bar")},
+						"response": {(*MethodDescriptor).GetOutputType, refs("hoveychen.protoreflect.desc.Bar")},
 					},
 				},
 				{
@@ -682,7 +682,7 @@ func TestServiceDescriptors(t *testing.T) {
 				{
 					name: "testprotos.TestService.DoSomethingAgain",
 					references: map[string]childCases{
-						"request":  {(*MethodDescriptor).GetInputType, refs("jhump.protoreflect.desc.Bar")},
+						"request":  {(*MethodDescriptor).GetInputType, refs("hoveychen.protoreflect.desc.Bar")},
 						"response": {(*MethodDescriptor).GetOutputType, refs("testprotos.AnotherTestMessage")},
 					},
 				},

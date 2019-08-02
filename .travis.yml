@@ -19,8 +19,8 @@ matrix:
 
 # accomodate forks
 before_install:
-  - mkdir -p $TRAVIS_BUILD_DIR $GOPATH/src/github.com/jhump
-  - test ! -d $GOPATH/src/github.com/jhump/protoreflect && mv $TRAVIS_BUILD_DIR $GOPATH/src/github.com/jhump/protoreflect || true
+  - mkdir -p $TRAVIS_BUILD_DIR $GOPATH/src/github.com/hoveychen
+  - test ! -d $GOPATH/src/github.com/hoveychen/protoreflect && mv $TRAVIS_BUILD_DIR $GOPATH/src/github.com/hoveychen/protoreflect || true
 
 script:
   - if [[ "$VET" = 1 ]]; then make; else make deps test; fi

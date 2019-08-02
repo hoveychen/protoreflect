@@ -4,10 +4,10 @@ import (
 	"github.com/golang/protobuf/proto"
 	"testing"
 
-	"github.com/jhump/protoreflect/desc"
+	"github.com/hoveychen/protoreflect/desc"
 
-	"github.com/jhump/protoreflect/internal/testprotos"
-	"github.com/jhump/protoreflect/internal/testutil"
+	"github.com/hoveychen/protoreflect/internal/testprotos"
+	"github.com/hoveychen/protoreflect/internal/testutil"
 )
 
 func TestSetExtension(t *testing.T) {

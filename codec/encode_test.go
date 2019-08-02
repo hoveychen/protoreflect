@@ -1,15 +1,15 @@
 package codec_test
 
 import (
-	"github.com/jhump/protoreflect/codec"
+	"github.com/hoveychen/protoreflect/codec"
 	"testing"
 
 	"github.com/golang/protobuf/proto"
 
-	"github.com/jhump/protoreflect/desc"
-	"github.com/jhump/protoreflect/dynamic"
-	"github.com/jhump/protoreflect/internal/testprotos"
-	"github.com/jhump/protoreflect/internal/testutil"
+	"github.com/hoveychen/protoreflect/desc"
+	"github.com/hoveychen/protoreflect/dynamic"
+	"github.com/hoveychen/protoreflect/internal/testprotos"
+	"github.com/hoveychen/protoreflect/internal/testutil"
 )
 
 func TestEncodeMessage(t *testing.T) {

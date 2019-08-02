@@ -14,7 +14,7 @@ import (
 	"math"
 	"unicode"
 
-	"github.com/jhump/protoreflect/desc/internal"
+	"github.com/hoveychen/protoreflect/desc/internal"
 )
 
 //line proto.y:18

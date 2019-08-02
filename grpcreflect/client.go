@@ -6,6 +6,7 @@ import (
 	"io"
 	"reflect"
 	"runtime"
+	"strings"
 	"sync"
 
 	"github.com/golang/protobuf/proto"
@@ -15,8 +16,8 @@ import (
 	rpb "google.golang.org/grpc/reflection/grpc_reflection_v1alpha"
 	"google.golang.org/grpc/status"
 
-	"github.com/jhump/protoreflect/desc"
-	"github.com/jhump/protoreflect/internal"
+	"github.com/hoveychen/protoreflect/desc"
+	"github.com/hoveychen/protoreflect/internal"
 )
 
 // elementNotFoundError is the error returned by reflective operations where the
@@ -120,6 +121,8 @@ type Client struct {
 	filesByName      map[string]*desc.FileDescriptor
 	filesBySymbol    map[string]*desc.FileDescriptor
 	filesByExtension map[extDesc]*desc.FileDescriptor
+
+	optoutDeps []string
 }
 
 // NewClient creates a new Client with the given root context and using the
@@ -133,6 +136,12 @@ func NewClient(ctx context.Context, stub rpb.ServerReflectionClient) *Client {
 		filesBySymbol:    map[string]*desc.FileDescriptor{},
 		filesByExtension: map[extDesc]*desc.FileDescriptor{},
 	}
+
+	cr.AppendOptOutDependencies([]string{
+		"github.com/mwitkow/go-proto-validators/validator.proto",
+		"validate/validate.proto",
+	})
+
 	// don't leak a grpc stream
 	runtime.SetFinalizer(cr, (*Client).Reset)
 	return cr
@@ -291,7 +300,30 @@ func (cr *Client) getAndCacheFileDescriptors(req *rpb.ServerReflectionRequest, e
 	return cr.descriptorFromProto(firstFd)
 }
 
+// AppendOptOutDependencies adds list of file proto not to be reflected.
+func (cr *Client) AppendOptOutDependencies(deps []string) {
+	cr.optoutDeps = append(cr.optoutDeps, deps...)
+}
+
+func (cr *Client) optoutDependencies(fd *dpb.FileDescriptorProto) {
+	var deps []string
+	for _, d := range fd.GetDependency() {
+		hit := false
+		for _, p := range cr.optoutDeps {
+			if strings.Contains(d, p) {
+				hit = true
+				break
+			}
+		}
+		if !hit {
+			deps = append(deps, d)
+		}
+	}
+	fd.Dependency = deps
+}
+
 func (cr *Client) descriptorFromProto(fd *dpb.FileDescriptorProto) (*desc.FileDescriptor, error) {
+	cr.optoutDependencies(fd)
 	deps := make([]*desc.FileDescriptor, len(fd.GetDependency()))
 	for i, depName := range fd.GetDependency() {
 		if dep, err := cr.FileByFilename(depName); err != nil {

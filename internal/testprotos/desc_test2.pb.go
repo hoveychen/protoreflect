@@ -6,8 +6,8 @@ package testprotos
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	nopkg "github.com/jhump/protoreflect/internal/testprotos/nopkg"
-	pkg "github.com/jhump/protoreflect/internal/testprotos/pkg"
+	nopkg "github.com/hoveychen/protoreflect/internal/testprotos/nopkg"
+	pkg "github.com/hoveychen/protoreflect/internal/testprotos/pkg"
 	math "math"
 )
 
@@ -204,7 +204,7 @@ func (*Frobnitz) XXX_OneofWrappers() []interface{} {
 }
 
 type Whatchamacallit struct {
-	Foos                 *pkg.Foo `protobuf:"varint,1,req,name=foos,enum=jhump.protoreflect.desc.Foo" json:"foos,omitempty"`
+	Foos                 *pkg.Foo `protobuf:"varint,1,req,name=foos,enum=hoveychen.protoreflect.desc.Foo" json:"foos,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`

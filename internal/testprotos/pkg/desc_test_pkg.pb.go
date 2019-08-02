@@ -82,7 +82,7 @@ func (Foo) EnumDescriptor() ([]byte, []int) {
 }
 
 type Bar struct {
-	Baz                  []Foo    `protobuf:"varint,1,rep,name=baz,enum=jhump.protoreflect.desc.Foo" json:"baz,omitempty"`
+	Baz                  []Foo    `protobuf:"varint,1,rep,name=baz,enum=hoveychen.protoreflect.desc.Foo" json:"baz,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -121,8 +121,8 @@ func (m *Bar) GetBaz() []Foo {
 }
 
 func init() {
-	proto.RegisterEnum("jhump.protoreflect.desc.Foo", Foo_name, Foo_value)
-	proto.RegisterType((*Bar)(nil), "jhump.protoreflect.desc.Bar")
+	proto.RegisterEnum("hoveychen.protoreflect.desc.Foo", Foo_name, Foo_value)
+	proto.RegisterType((*Bar)(nil), "hoveychen.protoreflect.desc.Bar")
 }
 
 func init() { proto.RegisterFile("pkg/desc_test_pkg.proto", fileDescriptor_7feb6b94bba39d5d) }

@@ -9,7 +9,7 @@ import (
 	"github.com/golang/protobuf/proto"
 	"github.com/golang/protobuf/protoc-gen-go/descriptor"
 
-	"github.com/jhump/protoreflect/desc"
+	"github.com/hoveychen/protoreflect/desc"
 )
 
 func (cb *Buffer) EncodeFieldValue(fd *desc.FieldDescriptor, val interface{}) error {

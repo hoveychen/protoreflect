@@ -1,8 +1,8 @@
 syntax = "proto2";
 
-option go_package = "github.com/jhump/protoreflect/internal/testprotos/pkg;pkg";
+option go_package = "github.com/hoveychen/protoreflect/internal/testprotos/pkg;pkg";
 
-package jhump.protoreflect.desc;
+package hoveychen.protoreflect.desc;
 
 enum Foo {
 	ABC = 0;

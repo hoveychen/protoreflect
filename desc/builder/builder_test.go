@@ -14,10 +14,10 @@ import (
 	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/golang/protobuf/ptypes/timestamp"
 
-	"github.com/jhump/protoreflect/desc"
-	"github.com/jhump/protoreflect/dynamic"
-	_ "github.com/jhump/protoreflect/internal/testprotos"
-	"github.com/jhump/protoreflect/internal/testutil"
+	"github.com/hoveychen/protoreflect/desc"
+	"github.com/hoveychen/protoreflect/dynamic"
+	_ "github.com/hoveychen/protoreflect/internal/testprotos"
+	"github.com/hoveychen/protoreflect/internal/testutil"
 )
 
 func TestSimpleDescriptorsFromScratch(t *testing.T) {

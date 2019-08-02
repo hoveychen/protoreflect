@@ -1,4 +1,4 @@
-module github.com/jhump/protoreflect
+module github.com/hoveychen/protoreflect
 
 require (
 	github.com/golang/protobuf v1.3.1
